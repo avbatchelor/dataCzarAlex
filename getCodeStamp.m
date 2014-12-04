@@ -54,8 +54,8 @@ function stampString = getCodeStamp(varargin)
     else
         currentFlag = '';
     end
-
-    stampString = [printPath,'-',shortHash,currentFlag];
+    repDir = char(regexp(printPath,'.*GitHub\\.+(?=\\)','match'));
+    stampString = [repDir,'-',shortHash,currentFlag];
     
     % Change back to the directory we started in
     cd(currentDir);
