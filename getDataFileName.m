@@ -9,8 +9,13 @@
 %
 %   JSB 3\22\2013
 %%
-function [fullFileName, path] = getDataFileName(prefixCode, expNum, flyNum, flyExpNum)
+function [fullFileName, path, trialNum, idString] = getDataFileName(exptInfo)
 
+    prefixCode  = exptInfo.prefixCode;
+    expNum      = exptInfo.expNum; 
+    flyNum      = exptInfo.flyNum;
+    flyExpNum   = exptInfo.flyExpNum;
+    
     microCzarSettings;   % Loads settings
   
     % Make numbers strings
@@ -26,11 +31,14 @@ function [fullFileName, path] = getDataFileName(prefixCode, expNum, flyNum, flyE
     fileNamePreamble = [dNum,'_',prefixCode,'_expNum',eNum,...
         '_flyNum',fNum,'_flyExpNum',fENum,'_trial'];
     
+    idString = [dNum,'_',prefixCode,'_expNum',eNum,...
+        '_flyNum',fNum,'_flyExpNum',fENum,'_'];
+    
     % Determine trial number 
-    trialN = 1;
-    while( size(dir([path,fileNamePreamble,num2str(trialN,'%03d'),'.mat']),1) > 0)
-        trialN = trialN + 1;
+    trialNum = 1;
+    while( size(dir([path,fileNamePreamble,num2str(trialNum,'%03d'),'.mat']),1) > 0)
+        trialNum = trialNum + 1;
     end
     
     % Put together full file name 
-    fullFileName = [path,fileNamePreamble,num2str(trialN,'%03d'),'.mat'];
+    fullFileName = [path,fileNamePreamble,num2str(trialNum,'%03d'),'.mat'];

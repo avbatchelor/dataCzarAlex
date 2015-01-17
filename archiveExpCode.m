@@ -6,17 +6,17 @@
 %   /dataDirectory/YYMMDD/Exp_expNum.m
 %
 %%
-function archiveExpCode(prefixCode,expNum,flyNum,flyExpNum)
+function archiveExpCode(exptInfo)
  
     % Make numbers strings
     dNum = datestr(now,'YYmmDD');
-    eNum = num2str(expNum,'%03d');
-    fNum = num2str(flyNum,'%03d');
-    fENum = num2str(flyExpNum,'%03d');
+    eNum = num2str(exptInfo.expNum,'%03d');
+    fNum = num2str(exptInfo.flyNum,'%03d');
+    fENum = num2str(exptInfo.flyExpNum,'%03d');
     
-    [~, path] = getDataFileName(prefixCode, expNum, flyNum, flyExpNum);
-    scriptFileName = [path,dNum,'_',prefixCode,'_expNum',eNum,...
-        '_flyNum',fNum,'_flyExpNum',fENum,'_script.m'];
+    [~, path] = getDataFileName(exptInfo);
+    scriptFileName = [path,dNum,'_',exptInfo.prefixCode,'_expNum',eNum,...
+        '_flyNum',fNum,'_flyExpNum',fENum,'_stimSetCode.m'];
 
     % Make a copy of the the source m-file
     if ~isdir(path)
