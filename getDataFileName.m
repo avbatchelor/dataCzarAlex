@@ -14,25 +14,26 @@ function [fullFileName, path, trialNum, idString] = getDataFileName(exptInfo)
     prefixCode  = exptInfo.prefixCode;
     expNum      = exptInfo.expNum; 
     flyNum      = exptInfo.flyNum;
-    flyExpNum   = exptInfo.flyExpNum;
+    cellNum     = exptInfo.cellNum;
+    cellExpNum  = exptInfo.cellExpNum; 
     
     microCzarSettings;   % Loads settings
   
     % Make numbers strings
-    dNum = datestr(now,'YYmmDD');
     eNum = num2str(expNum,'%03d');
     fNum = num2str(flyNum,'%03d');
-    fENum = num2str(flyExpNum,'%03d');
+    cNum = num2str(cellNum,'%03d');
+    cENum = num2str(cellExpNum,'%03d');
     
     % Put together path name and fileNamePreamble  
     path = [dataDirectory,prefixCode,'\expNum',eNum,...
-        '\flyNum',fNum,'\flyExpNum',fENum,'\'];
+        '\flyNum',fNum,'\cellNum',cNum,'\','\cellExpNum',cENum,'\'];
         
-    fileNamePreamble = [dNum,'_',prefixCode,'_expNum',eNum,...
-        '_flyNum',fNum,'_flyExpNum',fENum,'_trial'];
+    fileNamePreamble = [prefixCode,'_expNum',eNum,...
+        '_flyNum',fNum,'_cellNum',cNum,'_cellExpNum',cENum,'_trial'];
     
-    idString = [dNum,'_',prefixCode,'_expNum',eNum,...
-        '_flyNum',fNum,'_flyExpNum',fENum,'_'];
+    idString = [prefixCode,'_expNum',eNum,...
+        '_flyNum',fNum,'_cellNum',cNum,'_cellExpNum',cENum,'_'];
     
     % Determine trial number 
     trialNum = 1;

@@ -9,14 +9,14 @@
 function archiveExpCode(exptInfo)
  
     % Make numbers strings
-    dNum = datestr(now,'YYmmDD');
     eNum = num2str(exptInfo.expNum,'%03d');
     fNum = num2str(exptInfo.flyNum,'%03d');
-    fENum = num2str(exptInfo.flyExpNum,'%03d');
+    cNum = num2str(exptInfo.cellNum,'%03d');
+    cENum = num2str(exptInfo.cellExpNum,'%03d');
     
     [~, path] = getDataFileName(exptInfo);
-    scriptFileName = [path,dNum,'_',exptInfo.prefixCode,'_expNum',eNum,...
-        '_flyNum',fNum,'_flyExpNum',fENum,'_stimSetCode.m'];
+    scriptFileName = [path,exptInfo.prefixCode,'_expNum',eNum,...
+        '_flyNum',fNum,'_cellNum',cNum,'_cellExpNum',cENum,'_stimSetCode.m'];
 
     % Make a copy of the the source m-file
     if ~isdir(path)
