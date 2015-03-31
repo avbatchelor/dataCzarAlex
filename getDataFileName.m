@@ -27,7 +27,7 @@ function [fullFileName, path, trialNum, idString] = getDataFileName(exptInfo)
     
     % Put together path name and fileNamePreamble  
     path = [dataDirectory,prefixCode,'\expNum',eNum,...
-        '\flyNum',fNum,'\cellNum',cNum,'\','\cellExpNum',cENum,'\'];
+        '\flyNum',fNum,'\cellNum',cNum,'\','cellExpNum',cENum,'\'];
         
     fileNamePreamble = [prefixCode,'_expNum',eNum,...
         '_flyNum',fNum,'_cellNum',cNum,'_cellExpNum',cENum,'_trial'];
