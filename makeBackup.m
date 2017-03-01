@@ -2,5 +2,9 @@ function makeBackup()
 
     microCzarSettings;
     
-    disp(['Backuping up using: ',backupScript]);
-    system(backupScript,'-echo');
+    for i = 1:length(backupScript)
+        disp(['Backuping up using: ',backupScript{i}]);
+        system(backupScript{i},'-echo');
+    end
+    
+end
