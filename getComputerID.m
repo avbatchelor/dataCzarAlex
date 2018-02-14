@@ -1,5 +1,7 @@
 function computer = getComputerID
 
+cd('C:\')
+
 [~, out] = dos('vol');
 sc = strsplit(out,'\n');
 computerID = sc{2}(end-8:end);
