@@ -20,10 +20,10 @@ if strcmp(computer,'desktop')
     backupScript{2} = 'robocopy z:\ManuscriptData\processedData d:\ManuscriptData\processedData /fft /e /NDL /nc /ns /np';
 elseif strcmp(computer,'behavior')
     % Backup raw data without removing deleted files from server
-    backupScript{1} = 'robocopy C:\Users\Alex\Documents\Data z:\ManuscriptData\rawData /fft /e';
+    backupScript{1} = 'robocopy C:\Users\Alex\Documents\Data\ballData z:\ManuscriptData\rawData /fft /e';
 
     % Backup processed data and remove deleted files from server - since
     % processed files may be updated 
-    backupScript{2} = 'robocopy C:\Users\Alex\Documents\ProcessedData z:\ManuscriptData\processedData /fft /mir';
+    backupScript{2} = 'robocopy C:\Users\Alex\Documents\ProcessedData\ballData z:\ManuscriptData\processedData /fft /mir';
 end 
 
